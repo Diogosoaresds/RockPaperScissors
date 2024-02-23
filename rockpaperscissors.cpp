@@ -50,7 +50,7 @@ char getPlayerChoice(){
 
 char getComputerChoice(){
 
-    srand(time_t(0));
+    srand(time(0));
     int num = (rand() % 3) + 1;
 
     switch(num){
