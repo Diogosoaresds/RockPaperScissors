@@ -9,16 +9,24 @@ void chooseWinner(char player, char computer);
 int main(){
     char player;
     char computer;
+    char answer = 'Y';
 
-    player = getPlayerChoice();
-    std::cout<< "You Chose: \n";
-    showChoice(player);
-    computer = getComputerChoice(); 
-    std::cout<< "Computer Chose: \n";
-    showChoice(computer);
+    while (answer == 'Y' || answer == 'y') {
+        std::cout << "Do You Want to Play? (Y/N) \n";
+        std::cin >> answer;
 
-    chooseWinner(player, computer);
+        if (answer != 'Y' && answer != 'y')
+            break; // Sai do loop se a resposta não for 'Y' ou 'y'
 
+        player = getPlayerChoice();
+        std::cout<< "You Chose: \n";
+        showChoice(player);
+        computer = getComputerChoice(); 
+        std::cout<< "Computer Chose: \n";
+        showChoice(computer);
+
+       chooseWinner(player, computer);
+    }
     return 0;
 }
 
@@ -41,7 +49,7 @@ char getPlayerChoice(){
 
 char getComputerChoice(){
 
-    srand(time(0));
+    srand(time_t(0));
     int num = (rand() % 3) + 1;
 
     switch(num){
